@@ -1,0 +1,2302 @@
+[
+  {
+    "id": 177,
+    "name": "Mustangs Magic Black",
+    "games": [
+      {
+        "opponentId": 178,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 276,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 178,
+    "name": "Mustangs Fire Copper",
+    "games": [
+      {
+        "opponentId": 177,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 179,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 179,
+    "name": "Warriors Club Navy",
+    "games": [
+      {
+        "opponentId": 178,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 180,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 180,
+    "name": "Mustangs Dynasty Silver",
+    "games": [
+      {
+        "opponentId": 179,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 181,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 181,
+    "name": "Hawks Club Bronze",
+    "games": [
+      {
+        "opponentId": 180,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 182,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 182,
+    "name": "Warriors Magic Maroon",
+    "games": [
+      {
+        "opponentId": 181,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 183,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 183,
+    "name": "Rangers Suns Crimson",
+    "games": [
+      {
+        "opponentId": 182,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 184,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 184,
+    "name": "Lions Royals Turquoise",
+    "games": [
+      {
+        "opponentId": 183,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 185,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 185,
+    "name": "Giants Athletic White",
+    "games": [
+      {
+        "opponentId": 184,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 186,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 186,
+    "name": "Wolves Club Red",
+    "games": [
+      {
+        "opponentId": 185,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 187,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 187,
+    "name": "Falcons Fire Purple",
+    "games": [
+      {
+        "opponentId": 186,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 188,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 188,
+    "name": "Raiders Kings Turquoise",
+    "games": [
+      {
+        "opponentId": 187,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 189,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 189,
+    "name": "Celtics Fire Copper",
+    "games": [
+      {
+        "opponentId": 188,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 190,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 190,
+    "name": "Thunder Royals Turquoise",
+    "games": [
+      {
+        "opponentId": 189,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 191,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 191,
+    "name": "Bulldogs City Platinum",
+    "games": [
+      {
+        "opponentId": 190,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 192,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 192,
+    "name": "Warriors Bulls Emerald",
+    "games": [
+      {
+        "opponentId": 191,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 193,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 193,
+    "name": "Jets Galaxy Bronze",
+    "games": [
+      {
+        "opponentId": 192,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 194,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 194,
+    "name": "Warriors Force Green",
+    "games": [
+      {
+        "opponentId": 193,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 195,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 195,
+    "name": "Raiders Stars Silver",
+    "games": [
+      {
+        "opponentId": 194,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 196,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 196,
+    "name": "Tigers Team Red",
+    "games": [
+      {
+        "opponentId": 195,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 197,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 197,
+    "name": "Vikings Reign Maroon",
+    "games": [
+      {
+        "opponentId": 196,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 198,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 198,
+    "name": "Storm Team Maroon",
+    "games": [
+      {
+        "opponentId": 197,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 199,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 199,
+    "name": "Raiders Magic Cyan",
+    "games": [
+      {
+        "opponentId": 198,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 200,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 200,
+    "name": "Vikings Galaxy Yellow",
+    "games": [
+      {
+        "opponentId": 199,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 201,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 201,
+    "name": "Thunder Squad Platinum",
+    "games": [
+      {
+        "opponentId": 200,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 202,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 202,
+    "name": "Hawks Legends Green",
+    "games": [
+      {
+        "opponentId": 201,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 203,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 203,
+    "name": "Jets Crew Gold",
+    "games": [
+      {
+        "opponentId": 202,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 204,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 204,
+    "name": "Tigers Suns Maroon",
+    "games": [
+      {
+        "opponentId": 203,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 205,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 205,
+    "name": "Storm Fire Blue",
+    "games": [
+      {
+        "opponentId": 204,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 206,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 206,
+    "name": "Knights Reign Orange",
+    "games": [
+      {
+        "opponentId": 205,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 207,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 207,
+    "name": "Dragons Sounders Navy",
+    "games": [
+      {
+        "opponentId": 206,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 208,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 208,
+    "name": "Dragons Crew Platinum",
+    "games": [
+      {
+        "opponentId": 207,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 209,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 209,
+    "name": "Sharks Town Copper",
+    "games": [
+      {
+        "opponentId": 208,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 210,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 210,
+    "name": "Falcons Express Orange",
+    "games": [
+      {
+        "opponentId": 209,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 211,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 211,
+    "name": "Mustangs Bulls Red",
+    "games": [
+      {
+        "opponentId": 210,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 212,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 212,
+    "name": "Sharks Magic Indigo",
+    "games": [
+      {
+        "opponentId": 211,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 213,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 213,
+    "name": "Storm Legends Bronze",
+    "games": [
+      {
+        "opponentId": 212,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 214,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 214,
+    "name": "Bears Stars Cyan",
+    "games": [
+      {
+        "opponentId": 213,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 215,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 215,
+    "name": "Knights Dynasty Lime",
+    "games": [
+      {
+        "opponentId": 214,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 216,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 216,
+    "name": "Lightning Heat Black",
+    "games": [
+      {
+        "opponentId": 215,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 217,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 217,
+    "name": "Lions Titans White",
+    "games": [
+      {
+        "opponentId": 216,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 218,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 218,
+    "name": "Panthers Reign Black",
+    "games": [
+      {
+        "opponentId": 217,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 219,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 219,
+    "name": "Thunder Force Orange",
+    "games": [
+      {
+        "opponentId": 218,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 220,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 220,
+    "name": "Jets Kings Charcoal",
+    "games": [
+      {
+        "opponentId": 219,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 221,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 221,
+    "name": "Panthers Club Copper",
+    "games": [
+      {
+        "opponentId": 220,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 222,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 222,
+    "name": "Dragons Fire Orange",
+    "games": [
+      {
+        "opponentId": 221,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 223,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 223,
+    "name": "Panthers Heat Lime",
+    "games": [
+      {
+        "opponentId": 222,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 224,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 224,
+    "name": "Panthers Squad Gold",
+    "games": [
+      {
+        "opponentId": 223,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 225,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 225,
+    "name": "Rangers Bulls Green",
+    "games": [
+      {
+        "opponentId": 224,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 226,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 226,
+    "name": "Spartans Dynasty Red",
+    "games": [
+      {
+        "opponentId": 225,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 227,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 227,
+    "name": "Eagles Royals Charcoal",
+    "games": [
+      {
+        "opponentId": 226,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 228,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 228,
+    "name": "Raptors Sounders Yellow",
+    "games": [
+      {
+        "opponentId": 227,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 229,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 229,
+    "name": "Lightning Bulls Copper",
+    "games": [
+      {
+        "opponentId": 228,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 230,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 230,
+    "name": "Bears United Orange",
+    "games": [
+      {
+        "opponentId": 229,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 231,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 231,
+    "name": "Bulldogs Bulls Bronze",
+    "games": [
+      {
+        "opponentId": 230,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 232,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 232,
+    "name": "Celtics Legends Cyan",
+    "games": [
+      {
+        "opponentId": 231,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 233,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 233,
+    "name": "Wolves Bulls Navy",
+    "games": [
+      {
+        "opponentId": 232,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 234,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 234,
+    "name": "Eagles Kings Scarlet",
+    "games": [
+      {
+        "opponentId": 233,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 235,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 235,
+    "name": "Sharks Fire Navy",
+    "games": [
+      {
+        "opponentId": 234,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 236,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 236,
+    "name": "Bears Express Cyan",
+    "games": [
+      {
+        "opponentId": 235,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 237,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 237,
+    "name": "Vikings Team Yellow",
+    "games": [
+      {
+        "opponentId": 236,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 238,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 238,
+    "name": "Storm United Maroon",
+    "games": [
+      {
+        "opponentId": 237,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 239,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 239,
+    "name": "Rangers Reign Silver",
+    "games": [
+      {
+        "opponentId": 238,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 240,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 240,
+    "name": "Knights Kings Teal",
+    "games": [
+      {
+        "opponentId": 239,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 241,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 241,
+    "name": "Bulldogs Force Lime",
+    "games": [
+      {
+        "opponentId": 240,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 242,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 242,
+    "name": "Hawks Athletic Bronze",
+    "games": [
+      {
+        "opponentId": 241,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 243,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 243,
+    "name": "Raptors Squad Emerald",
+    "games": [
+      {
+        "opponentId": 242,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 244,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 244,
+    "name": "Lions Crew Emerald",
+    "games": [
+      {
+        "opponentId": 243,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 245,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 245,
+    "name": "Hawks Bulls Orange",
+    "games": [
+      {
+        "opponentId": 244,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 246,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 246,
+    "name": "Eagles Crew Charcoal",
+    "games": [
+      {
+        "opponentId": 245,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 247,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 247,
+    "name": "Jets City Lime",
+    "games": [
+      {
+        "opponentId": 246,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 248,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 248,
+    "name": "Giants United Platinum",
+    "games": [
+      {
+        "opponentId": 247,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 249,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 249,
+    "name": "Sharks Squad Purple",
+    "games": [
+      {
+        "opponentId": 248,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 250,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 250,
+    "name": "Vikings FC Purple",
+    "games": [
+      {
+        "opponentId": 249,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 251,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 251,
+    "name": "Wolves Force Teal",
+    "games": [
+      {
+        "opponentId": 250,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 252,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 252,
+    "name": "Sharks United Navy",
+    "games": [
+      {
+        "opponentId": 251,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 253,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 253,
+    "name": "Rangers Suns Emerald",
+    "games": [
+      {
+        "opponentId": 252,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 254,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 254,
+    "name": "Lions Reign Maroon",
+    "games": [
+      {
+        "opponentId": 253,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 255,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 255,
+    "name": "Panthers Legends Scarlet",
+    "games": [
+      {
+        "opponentId": 254,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 256,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 256,
+    "name": "Bulldogs Dynasty Orange",
+    "games": [
+      {
+        "opponentId": 255,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 257,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 257,
+    "name": "Lightning Athletic Crimson",
+    "games": [
+      {
+        "opponentId": 256,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 258,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 258,
+    "name": "Dragons United Lime",
+    "games": [
+      {
+        "opponentId": 257,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 259,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 259,
+    "name": "Raptors Bulls Green",
+    "games": [
+      {
+        "opponentId": 258,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 260,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 260,
+    "name": "Rangers Athletic Purple",
+    "games": [
+      {
+        "opponentId": 259,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 261,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 261,
+    "name": "Falcons United Lime",
+    "games": [
+      {
+        "opponentId": 260,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 262,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 262,
+    "name": "Falcons Galaxy Purple",
+    "games": [
+      {
+        "opponentId": 261,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 263,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 263,
+    "name": "Bulldogs Kings Indigo",
+    "games": [
+      {
+        "opponentId": 262,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 264,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 264,
+    "name": "Jets Sounders Turquoise",
+    "games": [
+      {
+        "opponentId": 263,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 265,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 265,
+    "name": "Giants Dynasty Yellow",
+    "games": [
+      {
+        "opponentId": 264,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 266,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 266,
+    "name": "Tigers United Copper",
+    "games": [
+      {
+        "opponentId": 265,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 267,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 267,
+    "name": "Knights Suns Silver",
+    "games": [
+      {
+        "opponentId": 266,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 268,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 268,
+    "name": "Sharks FC White",
+    "games": [
+      {
+        "opponentId": 267,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 269,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 269,
+    "name": "Rangers Heat Indigo",
+    "games": [
+      {
+        "opponentId": 268,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 270,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 270,
+    "name": "Lions Royals Teal",
+    "games": [
+      {
+        "opponentId": 269,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 271,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 271,
+    "name": "Falcons Club Charcoal",
+    "games": [
+      {
+        "opponentId": 270,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 272,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 272,
+    "name": "Hawks Titans Emerald",
+    "games": [
+      {
+        "opponentId": 271,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 273,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 273,
+    "name": "Lightning Team Cyan",
+    "games": [
+      {
+        "opponentId": 272,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 274,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 274,
+    "name": "Vikings Athletic Red",
+    "games": [
+      {
+        "opponentId": 273,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 275,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 275,
+    "name": "Celtics City Turquoise",
+    "games": [
+      {
+        "opponentId": 274,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 276,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  },
+  {
+    "id": 276,
+    "name": "Jets Suns Lime",
+    "games": [
+      {
+        "opponentId": 275,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      },
+      {
+        "opponentId": 177,
+        "teamScore": 0,
+        "opponentScore": 0,
+        "isWin": false,
+        "isTie": true,
+        "competitiveLevelDiff": 0
+      }
+    ],
+    "competitiveLevel": 5
+  }
+]
