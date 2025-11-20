@@ -6,6 +6,7 @@ export type EventInfo = {
   start_date: string | null
   end_date: string | null
   published: boolean | null
+  sport_id?: number | null
   match_count?: number
   team_count?: number
 }
@@ -54,8 +55,7 @@ export async function exploreDatabase(
   try {
     const supabase = getSupabaseClient(supabaseUrl, supabaseKey)
 
-    // Fetch events - use actual column names from the schema
-    // The events table has: event_start_local_at, event_end_local_at, and no published column
+    // Fetch events - we'll get sport_id separately from compete_event_details
     const { data: events, error: eventsError } = await supabase
       .from('events')
       .select('id, name, event_start_local_at, event_end_local_at')
@@ -67,6 +67,32 @@ export async function exploreDatabase(
         events: [],
         error: `Failed to fetch events: ${eventsError.message}`,
       }
+    }
+
+    // Fetch sport_id for all events from compete_event_details
+    const eventIds = events?.map(e => e.id) || []
+    const { data: eventDetails, error: detailsError } = await supabase
+      .schema('fb_compete')
+      .from('compete_event_details')
+      .select('event_id, sport_id')
+      .in('event_id', eventIds)
+    
+    // Debug logging
+    if (detailsError) {
+      console.warn('Error fetching event details:', detailsError)
+    }
+    
+    const sportIdMap = new Map<number, number | null>()
+    eventDetails?.forEach((detail: any) => {
+      sportIdMap.set(detail.event_id, detail.sport_id)
+    })
+    
+    // Debug: Log all sport_id mappings in a table
+    if (eventDetails && eventDetails.length > 0) {
+      console.table(eventDetails.map((d: any) => ({
+        event_id: d.event_id,
+        sport_id: d.sport_id,
+      })))
     }
 
     // For each event, get match and team counts
@@ -102,11 +128,23 @@ export async function exploreDatabase(
           start_date: event.event_start_local_at ? new Date(event.event_start_local_at).toISOString() : null,
           end_date: event.event_end_local_at ? new Date(event.event_end_local_at).toISOString() : null,
           published: true, // Assume published if we can see it (RLS handles visibility)
+          sport_id: sportIdMap.get(event.id) || null,
           match_count: matchCount || 0,
           team_count: teamIds.size,
         }
       })
     )
+
+    // Debug: Log final event-to-sport mapping
+    console.group('📊 Event Sport Mapping')
+    console.table(eventsWithStats.map(e => ({
+      id: e.id,
+      name: e.name,
+      sport_id: e.sport_id,
+      matches: e.match_count,
+      teams: e.team_count,
+    })))
+    console.groupEnd()
 
     return {
       connected: true,
@@ -137,7 +175,7 @@ export async function getEventPreview(
   try {
     const supabase = getSupabaseClient(supabaseUrl, supabaseKey)
 
-    // Get event details - use actual column names
+    // Get event details
     const { data: eventData, error: eventError } = await supabase
       .from('events')
       .select('id, name, event_start_local_at, event_end_local_at')
@@ -152,6 +190,16 @@ export async function getEventPreview(
         error: `Event not found: ${eventError?.message || 'Unknown error'}`,
       }
     }
+
+    // Get sport_id from compete_event_details
+    const { data: eventDetails } = await supabase
+      .schema('fb_compete')
+      .from('compete_event_details')
+      .select('sport_id')
+      .eq('event_id', eventId)
+      .single()
+    
+    const sportId = eventDetails?.sport_id as number | null
 
     // Get matches
     const { data: matches, error: matchError } = await supabase
@@ -169,6 +217,7 @@ export async function getEventPreview(
           start_date: eventData.event_start_local_at ? new Date(eventData.event_start_local_at).toISOString() : null,
           end_date: eventData.event_end_local_at ? new Date(eventData.event_end_local_at).toISOString() : null,
           published: true,
+          sport_id: sportId,
         },
         teams: [],
         matchCount: 0,
@@ -200,6 +249,7 @@ export async function getEventPreview(
           start_date: eventData.event_start_local_at ? new Date(eventData.event_start_local_at).toISOString() : null,
           end_date: eventData.event_end_local_at ? new Date(eventData.event_end_local_at).toISOString() : null,
           published: true,
+          sport_id: sportId,
         },
         teams: [],
         matchCount: matches?.length || 0,
@@ -214,6 +264,7 @@ export async function getEventPreview(
         start_date: eventData.event_start_local_at ? new Date(eventData.event_start_local_at).toISOString() : null,
         end_date: eventData.event_end_local_at ? new Date(eventData.event_end_local_at).toISOString() : null,
         published: true,
+        sport_id: sportId,
         match_count: matches?.length || 0,
         team_count: teamIds.size,
       },

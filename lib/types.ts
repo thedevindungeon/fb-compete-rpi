@@ -17,6 +17,7 @@ export type GameData = {
   isWin: boolean
   isTie?: boolean
   competitiveLevelDiff: number // positive means opponent is stronger
+  matchDate?: string // ISO timestamp from match.created_at
 }
 
 export type TeamData = {

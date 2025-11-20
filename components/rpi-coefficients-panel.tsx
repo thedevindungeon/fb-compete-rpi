@@ -1,24 +1,34 @@
 'use client'
 
+import { useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip'
 import { Button } from '@/components/ui/button'
-import { HelpCircle, RotateCcw } from 'lucide-react'
+import { Badge } from '@/components/ui/badge'
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
+import { HelpCircle, RotateCcw, ChevronDown, ChevronUp, Settings, TrendingUp, Target, BarChart3 } from 'lucide-react'
 import { DEFAULT_COEFFICIENTS } from '@/lib/types'
 import { toast } from 'sonner'
 import type { RPICoefficients } from '@/lib/types'
+import type { SportConfig } from '@/lib/sport-config'
 
 type RPICoefficientsPanelProps = {
   coefficients: RPICoefficients
   onCoefficientsChange: (coefficients: RPICoefficients) => void
+  sportConfig?: SportConfig
 }
 
 export function RPICoefficientsPanel({
   coefficients,
   onCoefficientsChange,
+  sportConfig,
 }: RPICoefficientsPanelProps) {
+  const [weightsExpanded, setWeightsExpanded] = useState(true)
+  const [adjustmentsExpanded, setAdjustmentsExpanded] = useState(false)
+  const [advancedExpanded, setAdvancedExpanded] = useState(false)
+
   const handleChange = (key: keyof RPICoefficients, value: string) => {
     const numValue = parseFloat(value) || 0
     onCoefficientsChange({
@@ -28,9 +38,11 @@ export function RPICoefficientsPanel({
   }
 
   const handleReset = () => {
-    onCoefficientsChange(DEFAULT_COEFFICIENTS)
-    toast.success('Coefficients reset', {
-      description: 'All coefficients restored to default values',
+    const defaultCoeffs = sportConfig?.defaultCoefficients || DEFAULT_COEFFICIENTS
+    onCoefficientsChange(defaultCoeffs)
+    const sportName = sportConfig?.displayName || 'default'
+    toast.success('Reset', {
+      description: `${sportName} defaults restored`,
     })
   }
 
@@ -44,7 +56,7 @@ export function RPICoefficientsPanel({
     tooltip: string 
   }) => (
     <div className="flex items-center gap-1">
-      <Label htmlFor={htmlFor} className="flex-1">{children}</Label>
+      <Label htmlFor={htmlFor} className="flex-1 text-xs">{children}</Label>
       <Tooltip>
         <TooltipTrigger asChild>
           <button type="button" className="text-muted-foreground hover:text-foreground transition-colors">
@@ -60,50 +72,38 @@ export function RPICoefficientsPanel({
 
   return (
     <Card>
-      <CardHeader className="pb-3">
-        <div className="flex items-start justify-between">
-          <div>
-            <CardTitle className="text-base">RPI Coefficients</CardTitle>
-            <CardDescription className="text-xs">
-              Adjust to affect rankings
-            </CardDescription>
+      <CardHeader className="pb-2">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-1.5">
+            <Settings className="h-4 w-4 text-primary" />
+            <CardTitle className="text-sm">Coefficients</CardTitle>
+            {sportConfig && sportConfig.name !== 'unknown' && (
+              <Badge variant="secondary" className="text-xs h-4 px-1 py-0 gap-0.5">
+                <span>{sportConfig.icon}</span>
+                <span className="text-xs">{sportConfig.displayName}</span>
+              </Badge>
+            )}
           </div>
           <Button
             variant="ghost"
             size="sm"
             onClick={handleReset}
-            className="gap-1 h-7 text-xs"
+            className="gap-1 h-6 w-6 p-0"
+            title={sportConfig ? `Reset to ${sportConfig.displayName} defaults` : 'Reset to defaults'}
           >
             <RotateCcw className="h-3 w-3" />
-            Reset
           </Button>
         </div>
       </CardHeader>
-      <CardContent className="space-y-3">
-        <div className="grid grid-cols-2 gap-2">
-          <div className="space-y-1">
-            <CoefficientLabel 
-              htmlFor="diffInterval"
-              tooltip="If set to 15, DIFF value will be capped at the interval [-15:15] to prevent extreme score differentials from skewing results."
-            >
-              <span className="text-xs">Diff Interval</span>
-            </CoefficientLabel>
-            <Input
-              id="diffInterval"
-              type="number"
-              value={coefficients.diffInterval}
-              onChange={(e) => handleChange('diffInterval', e.target.value)}
-              step="1"
-              className="h-7 text-xs transition-all focus:ring-2"
-            />
-          </div>
-
-          <div className="space-y-1">
+      <CardContent className="space-y-2 pt-0">
+        {/* Quick Settings */}
+        <div className="grid grid-cols-2 gap-1.5">
+          <div className="space-y-0.5">
             <CoefficientLabel 
               htmlFor="minGames"
-              tooltip="Minimum number of games required for a team to be ranked. Prevents teams with few games from appearing at the top of standings."
+              tooltip="Minimum games required to be ranked"
             >
-              <span className="text-xs">Min Games</span>
+              Min Games
             </CoefficientLabel>
             <Input
               id="minGames"
@@ -112,39 +112,64 @@ export function RPICoefficientsPanel({
               onChange={(e) => handleChange('minGames', e.target.value)}
               step="1"
               min="0"
-              className="h-7 text-xs transition-all focus:ring-2"
+              className="h-7 text-xs"
             />
           </div>
-        </div>
-
-        <div className="space-y-2.5">
-          <h3 className="font-semibold text-xs text-muted-foreground uppercase tracking-wide">RPI Coefficients</h3>
-          
-          <div className="space-y-1.5">
+          <div className="space-y-0.5">
             <CoefficientLabel 
-              htmlFor="clwpCoeff"
-              tooltip="Weight for team's own Competitive Level Winning Percentage. Higher values emphasize wins/losses more heavily in the final RPI calculation."
+              htmlFor="diffCoeff"
+              tooltip="Point differential weight"
             >
-              <span className="text-xs">CLWP</span>
+              DIFF
             </CoefficientLabel>
             <Input
-              id="clwpCoeff"
+              id="diffCoeff"
               type="number"
-              value={coefficients.clwpCoeff}
-              onChange={(e) => handleChange('clwpCoeff', e.target.value)}
+              value={coefficients.diffCoeff}
+              onChange={(e) => handleChange('diffCoeff', e.target.value)}
               step="0.01"
               min="0"
-              max="1"
-              className="h-7 text-xs transition-all focus:ring-2"
+              className="h-7 text-xs"
             />
           </div>
+          </div>
 
-          <div className="space-y-1.5">
+        {/* RPI Weights - Collapsible */}
+        <Collapsible open={weightsExpanded} onOpenChange={setWeightsExpanded}>
+          <CollapsibleTrigger asChild>
+            <Button variant="ghost" size="sm" className="w-full justify-between h-7 text-xs hover:bg-blue-50 dark:hover:bg-blue-950/30">
+              <span className="flex items-center gap-1.5">
+                <BarChart3 className="h-3 w-3 text-blue-600 dark:text-blue-400" />
+                RPI Weights
+              </span>
+              {weightsExpanded ? <ChevronUp className="h-3 w-3" /> : <ChevronDown className="h-3 w-3" />}
+            </Button>
+          </CollapsibleTrigger>
+          <CollapsibleContent className="space-y-1.5 pt-1">
+            <div className="space-y-1">
+              <CoefficientLabel 
+                htmlFor="clwpCoeff"
+                tooltip="Team's own win percentage weight"
+              >
+                CLWP
+              </CoefficientLabel>
+              <Input
+                id="clwpCoeff"
+                type="number"
+                value={coefficients.clwpCoeff}
+                onChange={(e) => handleChange('clwpCoeff', e.target.value)}
+                step="0.01"
+                min="0"
+                max="1"
+                className="h-7 text-xs"
+              />
+            </div>
+            <div className="space-y-1">
             <CoefficientLabel 
               htmlFor="oclwpCoeff"
-              tooltip="Weight for Opponent Competitive Level Winning Percentage. Higher values reward teams for playing against stronger opponents."
+                tooltip="Opponent strength weight"
             >
-              <span className="text-xs">OCLWP</span>
+                OCLWP
             </CoefficientLabel>
             <Input
               id="oclwpCoeff"
@@ -154,16 +179,15 @@ export function RPICoefficientsPanel({
               step="0.01"
               min="0"
               max="1"
-              className="h-7 text-xs transition-all focus:ring-2"
+                className="h-7 text-xs"
             />
           </div>
-
-          <div className="space-y-1.5">
+            <div className="space-y-1">
             <CoefficientLabel 
               htmlFor="ooclwpCoeff"
-              tooltip="Weight for Opponent's Opponent CLWP. This provides a second-degree measure of schedule strength by considering the quality of opponents' opponents."
+                tooltip="Opponent's opponent strength weight"
             >
-              <span className="text-xs">OOCLWP</span>
+                OOCLWP
             </CoefficientLabel>
             <Input
               id="ooclwpCoeff"
@@ -173,35 +197,30 @@ export function RPICoefficientsPanel({
               step="0.01"
               min="0"
               max="1"
-              className="h-7 text-xs transition-all focus:ring-2"
+                className="h-7 text-xs"
             />
           </div>
+          </CollapsibleContent>
+        </Collapsible>
 
-          <div className="space-y-1.5">
-            <CoefficientLabel 
-              htmlFor="dominationCoeff"
-              tooltip="Multiplier applied when a team has 8+ consecutive wins. Values < 1.0 prevent over-rewarding win streaks. Default: 0.9"
-            >
-              <span className="text-xs">Domination</span>
-            </CoefficientLabel>
-            <Input
-              id="dominationCoeff"
-              type="number"
-              value={coefficients.dominationCoeff}
-              onChange={(e) => handleChange('dominationCoeff', e.target.value)}
-              step="0.01"
-              min="0"
-              max="1"
-              className="h-7 text-xs transition-all focus:ring-2"
-            />
-          </div>
-
-          <div className="space-y-1.5">
+        {/* Competitive Level Adjustments - Collapsible */}
+        <Collapsible open={adjustmentsExpanded} onOpenChange={setAdjustmentsExpanded}>
+          <CollapsibleTrigger asChild>
+            <Button variant="ghost" size="sm" className="w-full justify-between h-7 text-xs hover:bg-purple-50 dark:hover:bg-purple-950/30">
+              <span className="flex items-center gap-1.5">
+                <Target className="h-3 w-3 text-purple-600 dark:text-purple-400" />
+                Level Adjustments
+              </span>
+              {adjustmentsExpanded ? <ChevronUp className="h-3 w-3" /> : <ChevronDown className="h-3 w-3" />}
+            </Button>
+          </CollapsibleTrigger>
+          <CollapsibleContent className="space-y-1.5 pt-1">
+            <div className="space-y-1">
             <CoefficientLabel 
               htmlFor="clgwStep"
-              tooltip="Adjustment amount per competitive level difference for wins. Beating a stronger team increases win value; beating a weaker team decreases it."
+                tooltip="Win adjustment per level difference"
             >
-              <span className="text-xs">CLGW Step</span>
+                CLGW Step
             </CoefficientLabel>
             <Input
               id="clgwStep"
@@ -210,16 +229,15 @@ export function RPICoefficientsPanel({
               onChange={(e) => handleChange('clgwStep', e.target.value)}
               step="0.01"
               min="0"
-              className="h-7 text-xs transition-all focus:ring-2"
+                className="h-7 text-xs"
             />
           </div>
-
-          <div className="space-y-1.5">
+            <div className="space-y-1">
             <CoefficientLabel 
               htmlFor="clglStep"
-              tooltip="Adjustment amount per competitive level difference for losses. Losing to a stronger team reduces loss penalty; losing to a weaker team increases it."
+                tooltip="Loss adjustment per level difference"
             >
-              <span className="text-xs">CLGL Step</span>
+                CLGL Step
             </CoefficientLabel>
             <Input
               id="clglStep"
@@ -228,28 +246,60 @@ export function RPICoefficientsPanel({
               onChange={(e) => handleChange('clglStep', e.target.value)}
               step="0.01"
               min="0"
-              className="h-7 text-xs transition-all focus:ring-2"
+                className="h-7 text-xs"
             />
           </div>
+          </CollapsibleContent>
+        </Collapsible>
 
-          <div className="space-y-1.5">
+        {/* Advanced - Collapsible */}
+        <Collapsible open={advancedExpanded} onOpenChange={setAdvancedExpanded}>
+          <CollapsibleTrigger asChild>
+            <Button variant="ghost" size="sm" className="w-full justify-between h-7 text-xs hover:bg-amber-50 dark:hover:bg-amber-950/30">
+              <span className="flex items-center gap-1.5">
+                <TrendingUp className="h-3 w-3 text-amber-600 dark:text-amber-400" />
+                Advanced
+              </span>
+              {advancedExpanded ? <ChevronUp className="h-3 w-3" /> : <ChevronDown className="h-3 w-3" />}
+            </Button>
+          </CollapsibleTrigger>
+          <CollapsibleContent className="space-y-1.5 pt-1">
+            <div className="space-y-1">
             <CoefficientLabel 
-              htmlFor="diffCoeff"
-              tooltip="Weight for point differentials. Higher values emphasize margin of victory/defeat. Measures how dominant teams are in their wins and losses."
+                htmlFor="dominationCoeff"
+                tooltip="Multiplier for 8+ win streaks"
             >
-              <span className="text-xs">DIFF Coeff</span>
+                Domination
             </CoefficientLabel>
             <Input
-              id="diffCoeff"
+                id="dominationCoeff"
               type="number"
-              value={coefficients.diffCoeff}
-              onChange={(e) => handleChange('diffCoeff', e.target.value)}
+                value={coefficients.dominationCoeff}
+                onChange={(e) => handleChange('dominationCoeff', e.target.value)}
               step="0.01"
               min="0"
-              className="h-7 text-xs transition-all focus:ring-2"
+                max="1"
+                className="h-7 text-xs"
             />
           </div>
+            <div className="space-y-1">
+              <CoefficientLabel 
+                htmlFor="diffInterval"
+                tooltip="DIFF value cap interval"
+              >
+                Diff Interval
+              </CoefficientLabel>
+              <Input
+                id="diffInterval"
+                type="number"
+                value={coefficients.diffInterval}
+                onChange={(e) => handleChange('diffInterval', e.target.value)}
+                step="1"
+                className="h-7 text-xs"
+              />
         </div>
+          </CollapsibleContent>
+        </Collapsible>
       </CardContent>
     </Card>
   )

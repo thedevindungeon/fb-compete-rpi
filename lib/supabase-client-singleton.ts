@@ -1,11 +1,16 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 
 // Use globalThis to persist across hot reloads and avoid multiple instances
+declare global {
+  // eslint-disable-next-line no-var
+  var __supabaseClientCache: Map<string, SupabaseClient> | undefined
+}
+
 const getGlobalCache = () => {
   if (typeof globalThis !== 'undefined' && !globalThis.__supabaseClientCache) {
     globalThis.__supabaseClientCache = new Map<string, SupabaseClient>()
   }
-  return (globalThis as any).__supabaseClientCache as Map<string, SupabaseClient>
+  return globalThis.__supabaseClientCache as Map<string, SupabaseClient>
 }
 
 export function getSupabaseClient(

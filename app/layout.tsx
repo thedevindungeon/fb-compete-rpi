@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useState } from 'react'
 import { Toaster } from 'sonner'
 import { TooltipProvider } from '@/components/ui/tooltip'
+import { SupabaseConnectionProvider } from '@/contexts/supabase-connection-context'
 import "./globals.css";
 
 const geistSans = Geist({
@@ -30,10 +31,12 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <QueryClientProvider client={queryClient}>
-          <TooltipProvider delayDuration={300}>
-            {children}
-            <Toaster position="top-right" richColors />
-          </TooltipProvider>
+          <SupabaseConnectionProvider>
+            <TooltipProvider delayDuration={300}>
+              {children}
+              <Toaster position="top-right" richColors />
+            </TooltipProvider>
+          </SupabaseConnectionProvider>
         </QueryClientProvider>
       </body>
     </html>

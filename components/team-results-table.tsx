@@ -15,11 +15,14 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 import { ArrowUp, ArrowDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import type { TeamRPIResult } from '@/lib/types'
+import type { SportConfig } from '@/lib/sport-config'
 
 type TeamResultsTableProps = {
   results: TeamRPIResult[]
   selectedTeamId?: number
   onTeamSelect?: (teamId: number | undefined) => void
+  startRank?: number // Starting rank for pagination (1-based)
+  sportConfig?: SportConfig
 }
 
 type SortField = keyof TeamRPIResult
@@ -28,7 +31,9 @@ type SortDirection = 'asc' | 'desc'
 export function TeamResultsTable({ 
   results, 
   selectedTeamId,
-  onTeamSelect 
+  onTeamSelect,
+  startRank = 1,
+  sportConfig
 }: TeamResultsTableProps) {
   const [sortField, setSortField] = useState<SortField>('rpi')
   const [sortDirection, setSortDirection] = useState<SortDirection>('desc')
@@ -65,15 +70,10 @@ export function TeamResultsTable({
 
   return (
     <Card>
-      <CardHeader className="pb-3">
+      <CardHeader className="pb-2">
         <div className="flex items-center justify-between">
-          <div>
-            <CardTitle className="text-base">Team Rankings</CardTitle>
-            <CardDescription className="text-xs">
-              Click headers to sort
-            </CardDescription>
-          </div>
-          <Badge variant="secondary" className="gap-1 text-xs">
+          <CardTitle className="text-sm">Rankings</CardTitle>
+          <Badge variant="secondary" className="gap-1 text-xs h-5">
             {sortField} {sortDirection === 'asc' ? '↑' : '↓'}
           </Badge>
         </div>
@@ -227,24 +227,26 @@ export function TeamResultsTable({
                         )}
                       </div>
                     </TableHead>
-                    <TableHead 
-                      className={cn(
-                        "cursor-pointer select-none hover:bg-muted/50 transition-colors text-right bg-card",
-                        sortField === 'diff' && "bg-muted/30 font-semibold"
-                      )}
-                      onClick={() => handleSort('diff')}
-                    >
-                      <div className="flex items-center gap-1.5 justify-end">
-                        DIFF
-                        {sortField === 'diff' && (
-                          sortDirection === 'asc' ? (
-                            <ArrowUp className="h-3.5 w-3.5" />
-                          ) : (
-                            <ArrowDown className="h-3.5 w-3.5" />
-                          )
+                    {sportConfig?.tableColumns.showDiff !== false && (
+                      <TableHead 
+                        className={cn(
+                          "cursor-pointer select-none hover:bg-muted/50 transition-colors text-right bg-card",
+                          sortField === 'diff' && "bg-muted/30 font-semibold"
                         )}
-                      </div>
-                    </TableHead>
+                        onClick={() => handleSort('diff')}
+                      >
+                        <div className="flex items-center gap-1.5 justify-end">
+                          DIFF
+                          {sortField === 'diff' && (
+                            sortDirection === 'asc' ? (
+                              <ArrowUp className="h-3.5 w-3.5" />
+                            ) : (
+                              <ArrowDown className="h-3.5 w-3.5" />
+                            )
+                          )}
+                        </div>
+                      </TableHead>
+                    )}
                     <TableHead 
                       className={cn(
                         "cursor-pointer select-none hover:bg-muted/50 transition-colors text-right font-bold bg-card",
@@ -268,23 +270,24 @@ export function TeamResultsTable({
                 <TableBody>
                   {sortedResults.map((result, index) => {
                     const isSelected = selectedTeamId === result.teamId
+                    const rank = startRank + index
                     return (
                     <TableRow
                       key={result.teamId}
                       className={cn(
                         "transition-colors hover:bg-muted/30 cursor-pointer",
-                        index < 3 && 'bg-primary/5 dark:bg-primary/10 border-l-2 border-l-primary',
+                        rank <= 3 && 'bg-primary/5 dark:bg-primary/10 border-l-2 border-l-primary',
                         isSelected && 'bg-primary/10 dark:bg-primary/20 border-l-4 border-l-primary font-semibold'
                       )}
                       onClick={() => onTeamSelect?.(isSelected ? undefined : result.teamId)}
                     >
                       <TableCell className="font-medium w-12 sticky left-0 z-10 bg-background">
-                        {index < 3 ? (
+                        {rank <= 3 ? (
                           <Badge variant="default" className="w-8 justify-center">
-                            {index + 1}
+                            {rank}
                           </Badge>
                         ) : (
-                          index + 1
+                          rank
                         )}
                       </TableCell>
                       <TableCell className="font-medium">{result.teamName}</TableCell>
@@ -295,8 +298,10 @@ export function TeamResultsTable({
                       <TableCell className="text-right font-mono text-sm">{formatNumber(result.clwp)}</TableCell>
                       <TableCell className="text-right font-mono text-sm">{formatNumber(result.oclwp)}</TableCell>
                       <TableCell className="text-right font-mono text-sm">{formatNumber(result.ooclwp)}</TableCell>
-                      <TableCell className="text-right font-mono text-sm">{formatNumber(result.diff)}</TableCell>
-                      <TableCell className="text-right font-bold font-mono text-base text-primary">
+                      {sportConfig?.tableColumns.showDiff !== false && (
+                        <TableCell className="text-right font-mono text-sm">{formatNumber(result.diff)}</TableCell>
+                      )}
+                      <TableCell className="text-right font-bold font-mono text-base text-primary bg-primary/5 dark:bg-primary/10">
                         {formatNumber(result.rpi)}
                       </TableCell>
                     </TableRow>

@@ -98,15 +98,12 @@ export function DataUploadPanel({
 
   return (
     <Card>
-      <CardHeader className="pb-3">
-        <CardTitle className="text-base">Upload Dataset</CardTitle>
-        <CardDescription className="text-xs">
-          Upload JSON file for client-side calculation
-        </CardDescription>
+      <CardHeader className="pb-2">
+        <CardTitle className="text-sm">Upload Dataset</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-2.5">
+      <CardContent className="space-y-2 pt-0">
         <div
-          className={`border-2 border-dashed rounded-lg p-4 text-center transition-colors cursor-pointer relative ${
+          className={`border-2 border-dashed rounded-lg p-3 text-center transition-colors cursor-pointer relative ${
             isDragging
               ? 'border-primary bg-primary/5'
               : 'border-muted-foreground/25 hover:border-muted-foreground/50'
@@ -121,9 +118,9 @@ export function DataUploadPanel({
             }
           }}
         >
-          <Upload className="mx-auto h-8 w-8 text-muted-foreground mb-2" />
-          <p className="text-xs text-muted-foreground mb-2">
-            Drag & drop or click to browse
+          <Upload className="mx-auto h-6 w-6 text-muted-foreground mb-1.5" />
+          <p className="text-xs text-muted-foreground mb-1.5">
+            Drop or click
           </p>
           <Button
             onClick={(e) => {

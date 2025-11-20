@@ -1,195 +1,195 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useCallback, useMemo, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { RPICoefficientsPanel } from '@/components/rpi-coefficients-panel'
 import { TeamResultsTable } from '@/components/team-results-table'
+import { TeamResultsChart } from '@/components/team-results-chart'
+import { ViewToggle } from '@/components/view-toggle'
 import { SampleDataPanel } from '@/components/sample-data-panel'
 import { SupabaseConnectionPanel } from '@/components/supabase-connection-panel'
 import { DataUploadPanel } from '@/components/data-upload-panel'
+import { MetadataSection } from '@/components/metadata-section'
+import { ExportButtons } from '@/components/export-buttons'
+import { PageHeader } from '@/components/page-header'
+import { RPIGeneratorPanel } from '@/components/rpi-generator-panel'
 import { useRPICalculation } from '@/hooks/use-rpi-calculation'
-import { Button } from '@/components/ui/button'
+import { useRPIData } from '@/hooks/use-rpi-data'
 import { DEFAULT_COEFFICIENTS } from '@/lib/types'
-import { SAMPLE_TEAMS } from '@/lib/sample-data'
-import { exportTeamDataToJSON } from '@/lib/data-export'
-import { calculateSuggestedCoefficients } from '@/lib/coefficient-suggestions'
-import { Download, Calculator, TrendingUp, Database, Upload as UploadIcon } from 'lucide-react'
+import { exportResultsToCSV } from '@/lib/csv-export'
+import { getGridLayout } from '@/lib/layout-utils'
+import { Calculator, Database } from 'lucide-react'
 import { toast } from 'sonner'
-import { Badge } from '@/components/ui/badge'
-import type { TeamData, RPICoefficients } from '@/lib/types'
+import { Pagination } from '@/components/ui/pagination'
+import { ERDView } from '@/components/erd-view'
+import { FormulasView } from '@/components/formulas-view'
+import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
+
+const ITEMS_PER_PAGE = 25
 
 export default function Home() {
-  const [teams, setTeams] = useState<TeamData[]>(SAMPLE_TEAMS)
-  const [coefficients, setCoefficients] = useState<RPICoefficients>(DEFAULT_COEFFICIENTS)
-  const [dataSource, setDataSource] = useState<'sample' | 'supabase' | 'upload' | 'none'>('sample')
-  const [selectedTeamId, setSelectedTeamId] = useState<number | undefined>()
+  const [coefficientsOverride, setCoefficientsOverride] = useState<typeof DEFAULT_COEFFICIENTS | null>(null)
+  const [leftPanelOpen, setLeftPanelOpen] = useState(true)
+  const [rightPanelOpen, setRightPanelOpen] = useState(true)
+  const [metadataExpanded, setMetadataExpanded] = useState(false)
+  const [viewMode, setViewMode] = useState<'table' | 'chart'>('table')
+  const [currentPage, setCurrentPage] = useState(1)
+  const [activeTab, setActiveTab] = useState<'calculator' | 'erd' | 'formulas'>('calculator')
 
-  const { data: results, isLoading } = useRPICalculation(teams, coefficients)
+  const {
+    teams,
+    dataSource,
+    selectedTeamId,
+    supabaseMetadata,
+    supabaseFilters,
+    supabaseUrl,
+    supabaseKey,
+    supabaseEventId,
+    supabaseSportId,
+    sportConfig,
+    handleLoadSampleData,
+    handleReset,
+    handleSupabaseDataLoaded,
+    handleSupabaseMetadataChange,
+    handleSupabaseFiltersChange,
+    handleUploadDataLoaded,
+    handleTeamSelect,
+    handleExportDataset,
+  } = useRPIData()
 
-  const handleLoadSampleData = (sampleTeams: TeamData[]) => {
-    setTeams(sampleTeams)
-    setDataSource('sample')
-    toast.success(`Loaded ${sampleTeams.length} teams`, {
-      description: 'Sample data loaded successfully',
-    })
-  }
+  // Use sport-specific coefficients unless overridden by user
+  const activeCoefficients = coefficientsOverride || sportConfig.defaultCoefficients
 
-  const handleReset = () => {
-    setTeams([])
-    setDataSource('none')
-    setSelectedTeamId(undefined)
-    toast.info('Data reset', {
-      description: 'All team data has been cleared',
-    })
-  }
+  const { data: results, isLoading } = useRPICalculation(teams, activeCoefficients)
 
-  const handleTeamSelect = (teamId: number | undefined) => {
-    setSelectedTeamId(teamId)
-    
-    if (teamId && results) {
-      const selectedTeam = results.find(r => r.teamId === teamId)
-      if (selectedTeam) {
-        const suggestedCoeffs = calculateSuggestedCoefficients(selectedTeam)
-        setCoefficients(suggestedCoeffs)
-        toast.info(`Coefficients adjusted for ${selectedTeam.teamName}`, {
-          description: 'Values optimized based on team performance',
-        })
-      }
+  // Pagination logic
+  const totalPages = useMemo(() => {
+    if (!results || results.length === 0) return 1
+    return Math.ceil(results.length / ITEMS_PER_PAGE)
+  }, [results])
+
+  const paginatedResults = useMemo(() => {
+    if (!results || results.length === 0) return []
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE
+    const endIndex = startIndex + ITEMS_PER_PAGE
+    return results.slice(startIndex, endIndex)
+  }, [results, currentPage])
+
+  // Reset to page 1 when results change
+  useEffect(() => {
+    if (results && results.length > 0 && currentPage > Math.ceil(results.length / ITEMS_PER_PAGE)) {
+      setCurrentPage(1)
+    }
+  }, [results, currentPage])
+
+  const handleTeamSelectWithCoeffs = useCallback((teamId: number | undefined) => {
+    const newCoeffs = handleTeamSelect(teamId, results)
+    if (newCoeffs) {
+      setCoefficientsOverride(newCoeffs)
+      if (teamId) {
+        const team = results?.find(r => r.teamId === teamId)
+        toast.info(team ? `Coefficients adjusted for ${team.teamName}` : 'Coefficients adjusted')
     } else {
-      setCoefficients(DEFAULT_COEFFICIENTS)
-      toast.info('Coefficients reset', {
-        description: 'Restored to default values',
-      })
+        toast.info('Coefficients reset')
     }
   }
+  }, [handleTeamSelect, results])
 
-  const handleSupabaseDataLoaded = (supabaseTeams: TeamData[]) => {
-    if (supabaseTeams.length > 0) {
-      // Create a new array reference to ensure React Query detects the change
-      setTeams([...supabaseTeams])
-      setDataSource('supabase')
-      toast.success(`Loaded ${supabaseTeams.length} teams from Supabase`, {
-        description: 'RPI calculation will start automatically',
-      })
-    } else {
-      toast.warning('No teams found', {
-        description: 'The selected event has no team data',
-      })
-    }
-  }
-
-  const handleUploadDataLoaded = (uploadedTeams: TeamData[]) => {
-    if (uploadedTeams.length > 0) {
-      // Create a new array reference to ensure React Query detects the change
-      setTeams([...uploadedTeams])
-      setDataSource('upload')
-      toast.success(`Loaded ${uploadedTeams.length} teams from file`, {
-        description: 'RPI calculation will start automatically',
-      })
-    }
-  }
-
-  const handleExportDataset = () => {
-    if (teams.length === 0) {
-      toast.error('No data to export', {
-        description: 'Please load team data first',
-      })
-      return
-    }
-    exportTeamDataToJSON(teams)
-    toast.success('Dataset exported', {
-      description: 'JSON file downloaded successfully',
-    })
-  }
-
-  const exportToCSV = () => {
+  const handleExportCSV = useCallback(() => {
     if (!results || results.length === 0) {
-      toast.error('No results to export', {
-        description: 'Please load data and calculate RPI first',
-      })
+      toast.error('No results to export')
       return
     }
-
-    const headers = [
-      'Rank',
-      'Team',
-      'Games',
-      'Wins',
-      'Losses',
-      'Ties',
-      'WP',
-      'CLWP',
-      'OCLWP',
-      'OOCLWP',
-      'DIFF',
-      'RPI',
-    ]
-
-    const rows = results.map((result, index) => [
-      index + 1,
-      result.teamName,
-      result.games,
-      result.wins,
-      result.losses,
-      result.ties,
-      result.wp.toFixed(4),
-      result.clwp.toFixed(4),
-      result.oclwp.toFixed(4),
-      result.ooclwp.toFixed(4),
-      result.diff.toFixed(4),
-      result.rpi.toFixed(4),
-    ])
-
-    const csvContent = [
-      headers.join(','),
-      ...rows.map((row) => row.join(',')),
-    ].join('\n')
-
-    const blob = new Blob([csvContent], { type: 'text/csv' })
-    const url = URL.createObjectURL(blob)
-    const link = document.createElement('a')
-    link.href = url
-    link.download = `rpi-results-${new Date().toISOString().split('T')[0]}.csv`
-    link.click()
-    URL.revokeObjectURL(url)
-    toast.success('Results exported', {
-      description: 'CSV file downloaded successfully',
-    })
-  }
+    exportResultsToCSV(results)
+    toast.success('Results exported')
+  }, [results])
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto py-4 px-4 max-w-[1920px]">
-        {/* Compact Header */}
-        <div className="mb-4 flex items-center justify-between flex-wrap gap-3">
-          <div className="flex items-center gap-2.5">
-            <Calculator className="h-6 w-6 text-primary" />
-            <div>
-              <h1 className="text-2xl font-bold leading-tight">RPI Calculator</h1>
-              <p className="text-xs text-muted-foreground mt-0.5">
-                Rating Percentage Index for sports tournaments
-              </p>
-            </div>
-          </div>
-          {teams.length > 0 && (
-            <div className="flex items-center gap-2">
-              <Badge variant="secondary" className="gap-1.5 text-xs">
-                <TrendingUp className="h-3 w-3" />
-                {results?.length || 0} teams
-              </Badge>
-              <Badge variant="outline" className="gap-1.5 text-xs">
-                {dataSource === 'sample' && <Calculator className="h-3 w-3" />}
-                {dataSource === 'supabase' && <Database className="h-3 w-3" />}
-                {dataSource === 'upload' && <UploadIcon className="h-3 w-3" />}
-                {dataSource}
-              </Badge>
-            </div>
-          )}
+      <div className="container mx-auto py-3 px-3 max-w-[1920px]">
+        {/* Tab Switcher */}
+        <div className="flex items-center gap-2 mb-3 border-b">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setActiveTab('calculator')}
+            className={cn(
+              "h-8 px-3 text-xs rounded-none border-b-2 border-transparent",
+              activeTab === 'calculator'
+                ? "border-primary text-foreground font-semibold bg-background"
+                : "text-muted-foreground/70 hover:text-foreground/80 hover:bg-muted/60"
+            )}
+          >
+            <Calculator className="h-3.5 w-3.5 mr-1.5" />
+            Calculator
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setActiveTab('erd')}
+            className={cn(
+              "h-8 px-3 text-xs rounded-none border-b-2 border-transparent",
+              activeTab === 'erd'
+                ? "border-primary text-foreground font-semibold bg-background"
+                : "text-muted-foreground/70 hover:text-foreground/80 hover:bg-muted/60"
+            )}
+          >
+            <Database className="h-3.5 w-3.5 mr-1.5" />
+            ERD
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setActiveTab('formulas')}
+            className={cn(
+              "h-8 px-3 text-xs rounded-none border-b-2 border-transparent",
+              activeTab === 'formulas'
+                ? "border-primary text-foreground font-semibold bg-background"
+                : "text-muted-foreground/70 hover:text-foreground/80 hover:bg-muted/60"
+            )}
+          >
+            <Calculator className="h-3.5 w-3.5 mr-1.5" />
+            Formulas
+          </Button>
         </div>
 
-        {/* Main Content Grid - Optimized for space */}
-        <div className="grid grid-cols-1 xl:grid-cols-[320px_1fr_400px] gap-4 mb-4">
+        {activeTab === 'erd' ? (
+          <div className="h-[calc(100vh-120px)]">
+            <ERDView />
+          </div>
+        ) : activeTab === 'formulas' ? (
+          <div className="h-[calc(100vh-120px)]">
+            <FormulasView />
+          </div>
+        ) : (
+          <>
+            <PageHeader
+              teamCount={results?.length || 0}
+              dataSource={dataSource}
+              sportConfig={dataSource === 'supabase' ? sportConfig : undefined}
+              leftPanelOpen={leftPanelOpen}
+              rightPanelOpen={rightPanelOpen}
+              onToggleLeftPanel={() => setLeftPanelOpen(!leftPanelOpen)}
+              onToggleRightPanel={() => setRightPanelOpen(!rightPanelOpen)}
+            />
+
+            <motion.div 
+          className={`grid grid-cols-1 gap-3 ${getGridLayout(leftPanelOpen, rightPanelOpen)}`}
+          layout
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
+        >
           {/* Left: Data Source Panels - Compact */}
-          <div className="xl:col-span-1 space-y-3">
+          <AnimatePresence>
+            {leftPanelOpen && (
+              <motion.div
+                key="left-panel"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+                className="xl:col-span-1 space-y-2"
+              >
             <SampleDataPanel
               onLoadSampleData={handleLoadSampleData}
               onReset={handleReset}
@@ -201,44 +201,64 @@ export default function Home() {
             />
             <SupabaseConnectionPanel
               onDataLoaded={handleSupabaseDataLoaded}
+              onMetadataChange={handleSupabaseMetadataChange}
+              externalFilters={supabaseFilters}
+              onFiltersChangeRequest={handleSupabaseFiltersChange}
             />
-          </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* Center: Results Table - Takes most space */}
-          <div className="xl:col-span-1">
+          <motion.div 
+            className="xl:col-span-1"
+            layout
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+          >
             {results && results.length > 0 ? (
-              <div className="space-y-3">
+              <div className="space-y-2">
                 <div className="flex justify-between items-center gap-2">
+                  <div className="flex items-center gap-2">
                   <div className="text-xs text-muted-foreground">
                     {results.length} teams
+                      {totalPages > 1 && (
+                        <span className="ml-1">
+                          (showing {((currentPage - 1) * ITEMS_PER_PAGE) + 1}-{Math.min(currentPage * ITEMS_PER_PAGE, results.length)})
+                        </span>
+                      )}
+                    </div>
+                    <ViewToggle view={viewMode} onViewChange={setViewMode} />
                   </div>
-                  <div className="flex gap-1.5">
-                    <Button
-                      onClick={handleExportDataset}
-                      variant="outline"
-                      size="sm"
+                  <ExportButtons
+                    onExportJSON={handleExportDataset}
+                    onExportCSV={handleExportCSV}
                       disabled={teams.length === 0}
-                      className="h-8 text-xs"
-                    >
-                      <Download className="h-3 w-3 mr-1.5" />
-                      JSON
-                    </Button>
-                    <Button 
-                      onClick={exportToCSV} 
-                      variant="outline"
-                      size="sm"
-                      className="h-8 text-xs"
-                    >
-                      <Download className="h-3 w-3 mr-1.5" />
-                      CSV
-                    </Button>
-                  </div>
+                  />
                 </div>
+                {viewMode === 'table' ? (
                 <TeamResultsTable 
-                  results={results} 
+                    results={paginatedResults} 
                   selectedTeamId={selectedTeamId}
-                  onTeamSelect={handleTeamSelect}
-                />
+                    onTeamSelect={handleTeamSelectWithCoeffs}
+                    startRank={(currentPage - 1) * ITEMS_PER_PAGE + 1}
+                    sportConfig={dataSource === 'supabase' ? sportConfig : undefined}
+                  />
+                ) : (
+                  <TeamResultsChart
+                    results={paginatedResults}
+                    allResults={results}
+                    selectedTeamId={selectedTeamId}
+                    onTeamSelect={handleTeamSelectWithCoeffs}
+                  />
+                        )}
+                {totalPages > 1 && (
+                  <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={setCurrentPage}
+                    className="pt-2"
+                  />
+                )}
               </div>
             ) : (
               <div className="h-full flex items-center justify-center border-2 border-dashed rounded-lg bg-muted/20">
@@ -251,27 +271,66 @@ export default function Home() {
                 </div>
               </div>
             )}
-          </div>
+          </motion.div>
 
-          {/* Right: Coefficients Panel - Compact */}
-          <div className="xl:col-span-1">
+          {/* Right: Coefficients Panel + Metadata Filters */}
+          <AnimatePresence>
+            {rightPanelOpen && (
+              <motion.div
+                key="right-panel"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+                transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+                className="xl:col-span-1 space-y-2"
+              >
             <RPICoefficientsPanel
-              coefficients={coefficients}
-              onCoefficientsChange={setCoefficients}
+              coefficients={activeCoefficients}
+              onCoefficientsChange={setCoefficientsOverride}
+              sportConfig={sportConfig}
             />
-          </div>
-        </div>
+                
+                {dataSource === 'supabase' && supabaseMetadata && (
+                  <MetadataSection
+                    metadata={supabaseMetadata}
+                    filters={supabaseFilters}
+                    expanded={metadataExpanded}
+                    onExpandedChange={setMetadataExpanded}
+                    onFiltersChange={handleSupabaseFiltersChange}
+                  />
+                )}
 
-        {isLoading && (
-          <div className="text-center py-8 space-y-2">
-            <div className="inline-flex items-center gap-2 text-muted-foreground">
-              <div className="h-4 w-4 animate-spin rounded-full border-2 border-primary border-t-transparent" />
-              <p className="text-sm">Calculating RPI...</p>
-            </div>
-            <p className="text-xs text-muted-foreground">
-              Processing {teams.length} teams
-            </p>
-          </div>
+                {dataSource === 'supabase' && supabaseUrl && supabaseKey && supabaseEventId && results && (
+                  <RPIGeneratorPanel
+                    supabaseUrl={supabaseUrl}
+                    supabaseKey={supabaseKey}
+                    eventId={supabaseEventId}
+                    sportId={supabaseSportId}
+                    teams={teams}
+                    rpiResults={results}
+                    onGenerate={() => {
+                      // Optional: Could trigger a refresh or show additional feedback
+                      toast.success('RPI generation complete')
+                    }}
+                  />
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+
+            {isLoading && (
+              <div className="text-center py-8 space-y-2">
+                <div className="inline-flex items-center gap-2 text-muted-foreground">
+                  <div className="h-4 w-4 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+                  <p className="text-sm">Calculating RPI...</p>
+                </div>
+                <p className="text-xs text-muted-foreground">
+                  Processing {teams.length} teams
+                </p>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>
